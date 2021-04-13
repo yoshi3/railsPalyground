@@ -1,24 +1,23 @@
-# README
+## Start iamge
+cd an image derectory top level
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```sh
+docker-compose up
+```
 
-Things you may want to cover:
+or
 
-* Ruby version
+```sh
+docker-compose up -d
+```
 
-* System dependencies
+## Stop
+cd an image derectory top level
 
-* Configuration
+ctrl + c
 
-* Database creation
+or
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```sh
+docker-compose stop
+```

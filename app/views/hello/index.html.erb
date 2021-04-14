@@ -1,0 +1,11 @@
+<h1><%= @title %></h1>
+<p><%= @message %></p>
+<form method="POST" action="/hello">
+  <input 
+          type="text" 
+          class="form-control"
+          name="input1"
+          value="<%= @value %>"
+  >
+  <input type="submit" class="submit-button">
+</form>

@@ -1,31 +1,23 @@
 class HelloController < ActionController::Base
+  before_action :beforeEachAction
   protect_from_forgery
 
-  @@title = 'Page title'
-  @@message = 'A default message';
-  def initialize()
-  end
+  @@title = 'Which do u like?'
+  @@message = 'Plz select ur one'
+  @@select_items = ['apples', 'bananas', 'oranges']
+
   def beforeEachAction
     @title = @@title
-    @message = params[:message] || @@message
+    @message = @@message
+    @select_items = @@select_items
+    @selected = params[:selected] || '';
+    @reason = params[:reason] || '';
   end
   def index
-    self.beforeEachAction()
-    @value = ''
     if request.post? then
-      @title = 'A post request'
-      @message = "you typed #{params[:input1]}."
-      @value = params[:input1]
-    end
-
-    if @title == '' || @message == '' then
-      redirect_to action: :other, 
-      params: { 
-        'message': 'from another page'
-      }
+      @message = "Yay! Ur selected are #{@selected}!" || @@message
     end
   end
   def other
-    self.beforeEachAction()
   end
 end

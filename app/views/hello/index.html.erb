@@ -1,11 +1,21 @@
 <h1><%= @title %></h1>
 <p><%= @message %></p>
 <form method="POST" action="/hello">
-  <input 
-          type="text" 
-          class="form-control"
-          name="input1"
-          value="<%= @value %>"
-  >
-  <input type="submit" class="submit-button">
+  <ul>
+    <% @select_items.each do |item| %>
+      <li>
+        <label>
+          <input 
+            type="radio"
+            name="selected"
+            value="<%= item %>"
+            <% if @selected == item %>checked<% end %>
+          ><%= item %>
+        </label>
+      </li>
+    <% end %>
+  </ul>
+  <p>Why this one?</p>
+  <p><textarea name="reason"><%= @reason %></textarea></p>
+  <p><input type="submit" value="sumit" class="submit-button"></p>
 </form>

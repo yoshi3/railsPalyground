@@ -3,6 +3,4 @@ Rails.application.routes.draw do
   get 'hello', to: 'hello#index'
   post 'hello/index'
   post 'hello', to: 'hello#index'
-  get 'hello/other'
-  get 'hello', to: 'hello#other'
 end

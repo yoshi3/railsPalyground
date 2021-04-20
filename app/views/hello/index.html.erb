@@ -1,21 +1,8 @@
 <h1><%= @title %></h1>
 <p><%= @message %></p>
-<form method="POST" action="/hello">
-  <ul>
-    <% @select_items.each do |item| %>
-      <li>
-        <label>
-          <input 
-            type="radio"
-            name="selected"
-            value="<%= item %>"
-            <% if @selected == item %>checked<% end %>
-          ><%= item %>
-        </label>
-      </li>
-    <% end %>
-  </ul>
-  <p>Why this one?</p>
-  <p><textarea name="reason"><%= @reason %></textarea></p>
-  <p><input type="submit" value="sumit" class="submit-button"></p>
-</form>
+<%= form_tag(controller: 'hello', action: 'index') do %>
+  <%= select_tag('s1', 
+  options_for_select(['windows', 'MacOS', 'Linux']),
+  {size: 5, multiple: true}) %>
+  <%= submit_tag('Click') %>
+<% end %>

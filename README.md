@@ -5,8 +5,6 @@ It needs `ruby2.7.3` and `mysql8`
 
 ```sh
 docker-compose up -d --build
-docker-compose run web rails db:create
-docker-compose run web rails db:migrate
 ```
 
 ## Start iamge

@@ -8,6 +8,10 @@ WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
+RUN bundle exec rails db:create
+RUN bundle exec rails db:migrate
+RUN bundle exec rails webpacker:install
+RUN bundle exec rails webpacker:compile
 COPY . /myapp
 
 COPY entrypoint.sh /usr/bin/

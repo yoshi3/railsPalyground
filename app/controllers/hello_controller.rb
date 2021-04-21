@@ -1,6 +1,9 @@
 class HelloController < ActionController::Base
+  layout 'hello'
 
   def index
+    @header = 'Layout sample'
+    @footer = 'copyright foobar 2021'
     if request.post? then
       @title = 'Result'
       if params[:s1] then

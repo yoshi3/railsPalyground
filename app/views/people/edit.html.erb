@@ -1,0 +1,17 @@
+<h1>People#Edit</h1>
+<p><%= @message %></p>
+<%= form_for(@person, url: {controller: 'people', action: 'update', id: @person.id}) do |form| %>
+    <div>
+        <label for="name">Name</label>
+        <%= form.text_field :name %>
+    </div>
+    <div>
+        <label for="age">Age</label>
+        <%= form.text_field :age %>
+    </div>
+    <div>
+        <label for="mail">Mail</label>
+        <%= form.text_field :mail %>
+    </div>
+    <%= form.submit %>
+<% end %>

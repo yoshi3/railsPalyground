@@ -1,0 +1,30 @@
+<h1>Card#add</h1>
+<p>※登録する読書データを入力してください。</p>
+<p>
+    <a href="/cards">
+        トップページに戻る
+    </a>
+</p>
+<%= form_for(@card, url: { controller: 'cards', action: 'add' }) do |form| %>
+    <div>
+        <label for="title">タイトル</label>
+        <%= form.text_field :title %>
+    </div>
+    <div>
+        <label for="author">著者</label>
+        <%= form.text_field :author %>
+    </div>
+    <div>
+        <label for="price">価格</label>
+        <%= form.text_field :price %>
+    </div>
+    <div>
+        <label for="publisher">出版社</label>
+        <%= form.text_field :publisher %>
+    </div>
+    <div>
+        <label for="memo">メモ</label>
+        <%= form.text_area :memo %>
+    </div>
+    <%= form.submit '保存' %>
+<% end %>

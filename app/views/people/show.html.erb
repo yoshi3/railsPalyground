@@ -1,4 +1,9 @@
-<h1>People#Show</h1>
+<h1>People#show</h1>
+<p>
+    <a href="/people">
+        人物一覧へ戻る
+    </a>
+</p>
 <p><%= @message %></p>
 <table>
     <tr>
@@ -16,5 +21,15 @@
     <tr>
         <th>Mail</th>
         <td><%= @data.mail %></td>
+    </tr>
+    <tr>
+        <th>Message</th>
+        <td>
+        <% if @data.message != nil then %>
+            <% @data.message.each do |object| %>
+                  「<a href="/messages/<%= object.id %>"><%= object.title %></a>」
+            <% end %>
+        <% end %>
+        </td>
     </tr>
 </table>

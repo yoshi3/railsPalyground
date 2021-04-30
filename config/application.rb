@@ -18,5 +18,8 @@ module App
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Don't use .field_with_errors
+    config.action_view.field_error_proc = proc { |input, _instance| input }
   end
 end

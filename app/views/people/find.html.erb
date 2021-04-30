@@ -1,0 +1,50 @@
+<h1>People#find</h1>
+<p><%= @message %></p>
+<%= form_tag(controller: 'people', action: 'find') do %>
+<div>
+    <label for="find">find<label>
+    <%= text_field_tag('find', params[:find]) %>
+    <%= submit_tag('click') %>
+</div>
+<% end %>
+<p>
+    <a href="/people/add">
+        Add
+    </a>
+<p>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <% @data.each do |object| %>
+    <tr>
+        <td><%= object.id %></td>
+        <td>
+            <a href="/people/<%= object.id %>">
+                <%= object.name %>
+            </a>
+        </td>
+        <td>
+            <a href="/people/edit/<%= object.id %>">
+                Edit
+            </a>
+        </td>
+        <td>
+            <a href="javascript:deleteData(<%= object.id %>);">
+                Delete
+            </a>
+        </td>
+    </tr>
+    <% end %>
+</table>
+<script>
+function deleteData(id) {
+    if (confirm('このデータを削除しますか？')) {
+        document.location = `/people/delete/${id}`;
+    }
+    return false;
+}
+</script>

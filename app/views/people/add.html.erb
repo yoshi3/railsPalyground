@@ -1,5 +1,17 @@
-<h1>People#Add</h1>
+<h1>People#add</h1>
 <p><%= @message %></p>
+<p>
+    <a href="/people">
+        人物一覧へ戻る
+    </a>
+</p>
+<% if @person.errors.any? %>
+<ul>
+    <% @person.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+    <% end %>
+</ul>
+<% end %>
 <%= form_for(@person, url: {controller: 'people', action: 'create'}) do |form| %>
     <div>
         <label for="name">Name</label>

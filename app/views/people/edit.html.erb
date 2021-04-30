@@ -1,5 +1,10 @@
-<h1>People#Edit</h1>
+<h1>People#edit</h1>
 <p><%= @message %></p>
+<p>
+    <a href="/people">
+        人物一覧へ戻る
+    </a>
+</p>
 <%= form_for(@person, url: {controller: 'people', action: 'update', id: @person.id}) do |form| %>
     <div>
         <label for="name">Name</label>

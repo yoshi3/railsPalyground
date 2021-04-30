@@ -1,0 +1,29 @@
+<h1>Messages#edit</h1>
+<p><%= @message %></p>
+<p>
+    <a href="/messages">
+        メッセージ一覧へ戻る
+    </a>
+</p>
+<% if @data.errors.any? %>
+<ul>
+    <% @data.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+    <% end %>
+</ul>
+<% end %>
+<%= form_for(@data, url: {controller: 'messages', action: 'update'}) do |form| %>
+    <div>
+        <p><label for="person_id">person id</label></p>
+        <div><%= form.text_field :person_id %></div>
+    </div>
+    <div>
+        <p><label for="title">title</label></p>
+        <div><%= form.text_field :title %></div>
+    </div>
+    <div>
+        <p><label for="message">message</label></p>
+        <div><%= form.text_area :message %></div>
+    </div>
+    <%= form.submit %>
+<% end %>

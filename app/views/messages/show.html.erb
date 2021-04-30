@@ -1,0 +1,33 @@
+<h1>Messages#show</h1>
+<p><%= @messgae %></p>
+<p>
+    <a href="/messages">
+        メッセージ一覧へ戻る
+    </a>
+</p>
+<table>
+    <tr>
+        <th>Id</th>
+        <td><%= @data.id %></td>
+    </tr>
+    <tr>
+        <th>Person</th>
+        <td>
+            <a href="/people/<%= @data.person.id %>">
+                <%= @data.person.name %>
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <th>title</th>
+        <td><%= @data.title %></td>
+    </tr>
+    <tr>
+        <th>message</th>
+        <td><%= @data.message %></td>
+    </tr>
+    <tr>
+        <th>created</th>
+        <td><%= @data.created_at %></td>
+    </tr>
+</table>

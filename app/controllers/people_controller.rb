@@ -1,6 +1,4 @@
 class PeopleController < ActionController::Base
-  layout 'people'
-
   def index
     @message = 'Person datas.'
     @data = Person.all

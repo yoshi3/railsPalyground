@@ -25,5 +25,9 @@
         <p><label for="message">message</label></p>
         <div><%= form.text_area :message %></div>
     </div>
+    <div>
+        <p><label for="image">image</label></p>
+        <div><%= form.file_field :image %></div>
+    </div>
     <%= form.submit '作成' %>
 <% end %>

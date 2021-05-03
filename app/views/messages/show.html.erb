@@ -5,6 +5,11 @@
         メッセージ一覧へ戻る
     </a>
 </p>
+<p>
+    <a href="/messages/edit/<%= @data.id %>?from=message">
+        編集する
+    </a>
+</p>
 <table>
     <tr>
         <th>Id</th>
@@ -27,7 +32,60 @@
         <td><%= @data.message %></td>
     </tr>
     <tr>
+        <th>image</th>
+        <td>
+            <% if @data.image? %>
+                <%= image_tag @data.image.url %>
+            <% end %>
+        </td>
+    </tr>
+    <tr>
         <th>created</th>
         <td><%= @data.created_at %></td>
     </tr>
 </table>
+<p>
+    <a href="/comments/add?message_id=<%= @data.id %>">
+        コメントをする
+    </a>
+<p>
+<table>
+    <tr>
+        <th>Person</th>
+        <th>Comment</th>
+        <td></td>
+        <td></td>
+    </tr>
+<% if @data.comment != nil then %>
+    <% @data.comment.each do |object| %>
+    <tr>
+        <td>
+            <a href="/people/<%= object.person.id %>">
+                <%= object.person.name %>
+            </a>
+        </td>
+        <td>
+            <%= object.comment %>
+        </td>
+        <td>
+            <a href="/comments/edit/<%= object.id %>">
+                Edit
+            </a>
+        </td>
+        <td>
+            <a href="javascript:deleteComment(<%= object.id %>);">
+                Delete
+            </a>
+        </td>
+    <tr>
+    <% end %>
+<% end %>
+</table>
+<script>
+function deleteComment(id) {
+    if (confirm('このコメントを削除しますか？')) {
+        document.location = `/comments/delete/${id}`;
+    }
+    return false;
+}
+</script>

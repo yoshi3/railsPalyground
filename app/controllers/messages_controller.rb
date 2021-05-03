@@ -1,6 +1,4 @@
-class MessagesController < ActionController::Base
-  layout 'messages'
-
+class MessagesController < ApplicationController
   def index
     @message = 'Message datas.'
     @data = Message.all
@@ -23,12 +21,16 @@ class MessagesController < ActionController::Base
   end
   def edit
     @message = "Edit data.[id = #{params[:id]}]"
-    @data = Message.find params[:id] 
+    @data = Message.find params[:id]
   end
   def update
     object = Message.find params[:id]
     object.update(message_params)
-    redirect_to '/messages'
+    if params.has_key? :from
+      redirect_to "/messages/#{object.id}"
+    else
+      redirect_to '/messages'
+    end
   end
   def delete
     object = Message.find(params[:id])
@@ -38,6 +40,6 @@ class MessagesController < ActionController::Base
 
   private
   def message_params
-    params.require(:message).permit(:person_id, :title, :message)
+    params.require(:message).permit(:person_id, :title, :message, :image)
   end
 end

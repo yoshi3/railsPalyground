@@ -1,0 +1,31 @@
+<h1>Comennts#add</h1>
+<p><%= @message %></p>
+<% if @data.message_id? %>
+<p>
+    <a href="/messages/<%= @data.message_id %>">
+        メッセージへ戻る
+    </a>
+</p>
+<% end %>
+<% if @data.errors.any? %>
+<ul>
+    <% @data.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+    <% end %>
+</ul>
+<% end %>
+<%= form_for(@data, url: {controller: 'comments', action: 'create'}) do |form| %>
+    <div>
+        <p><label for="person_id">Person ID</label></p>
+        <div><%= form.text_field :person_id %></div>
+    </div>
+    <div>
+        <p><label for="message_id">Message ID</label></p>
+        <div><%= form.text_field :message_id %></div>
+    </div>
+    <div>
+        <p><label for="comment">comment</label></p>
+        <div><%= form.text_area :comment %></div>
+    </div>
+    <%= form.submit 'コメントする' %>
+<% end %>

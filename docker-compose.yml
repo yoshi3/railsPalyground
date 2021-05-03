@@ -1,5 +1,18 @@
 version: '3'
 services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
+    environment:
+      - discovery.type=single-node
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - '9200:9200'
+    expose:
+      - 9300
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
   db:
     image: mysql:8.0
     environment:
@@ -16,11 +29,13 @@ services:
     volumes:
       - .:/myapp
     ports:
-      - "3000:3000"
+      - '3000:3000'
     depends_on:
       - db
     stdin_open: true
     tty: true
 volumes:
+  es-data:
+    driver: local
   mysql-data:
     driver: local

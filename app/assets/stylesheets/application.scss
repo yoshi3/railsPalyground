@@ -1,0 +1,10 @@
+body {
+    background: #38393D;
+    color: #fff;
+}
+a {
+    &:link,
+    &:visited {
+        color: #fff;
+    }
+}

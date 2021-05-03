@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :articles
+  resources :answers
+  resources :questions
   get 'cards/index'
   get 'cards/', to: 'cards#index'
   get 'cards/add'
@@ -35,4 +38,13 @@ Rails.application.routes.draw do
   patch 'messages/edit/:id', to: 'messages#update'
   get 'messages/delete/:id', to: 'messages#delete'
   get 'messages/:id', to: 'messages#show'
+
+  get 'comments/index'
+  get 'comments', to: 'comments#index'
+  get 'comments/add'
+  post 'comments/add', to: 'comments#create'
+  get 'comments/edit/:id', to: 'comments#edit'
+  patch 'comments/edit/:id', to: 'comments#update'
+  get 'comments/delete/:id', to: 'comments#delete'
+  get 'comments/:id', to: 'comments#show'
 end

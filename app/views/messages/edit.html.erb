@@ -12,7 +12,7 @@
     <% end %>
 </ul>
 <% end %>
-<%= form_for(@data, url: {controller: 'messages', action: 'update'}) do |form| %>
+<%= form_for(@data, url: {controller: 'messages', action: 'update', from: params[:from]}) do |form| %>
     <div>
         <p><label for="person_id">person id</label></p>
         <div><%= form.text_field :person_id %></div>
